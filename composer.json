@@ -11,12 +11,13 @@
 	"require": {
 		"laravel/framework": "5.3.* || 5.4.* || 5.5.*",
 		"omnicode/lara-service": "~0.0",
-    "omnicode/lara-crud": "~0.0",
+		"omnicode/lara-support": "~0.0",
+    	"omnicode/lara-crud": "~0.0",
 		"omnicode/lara-repo": "~0.0",
-    "omnicode/lara-model": "~0.0",
+		"omnicode/lara-model": "~0.0",
 		"omnicode/lara-view": "~0.0",
-    "omnicode/lara-view-composer": "~0.0"
-    
+		"omnicode/lara-validation": "~0.0",
+		"omnicode/lara-view-composer": "~0.0"
 	},
 	"require-dev": {
 		"mockery/mockery": "~0.9",
