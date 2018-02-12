@@ -1,2 +1,2 @@
-# lara-Maker
+# lara-make
 
