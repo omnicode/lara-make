@@ -1,8 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\Abstracts;
+namespace LaraMake\Console\Commands\Abstracts;
 
-use LaraMaker\Exceptions\LaraCommandException;
+use LaraMake\Exceptions\LaraCommandException;
 
 abstract class InterfaceMaker extends Maker
 {

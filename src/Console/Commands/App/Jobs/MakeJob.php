@@ -1,12 +1,12 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Jobs;
+namespace LaraMake\Console\Commands\App\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
 
 class MakeJob extends ClassMaker
 {

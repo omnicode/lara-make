@@ -1,9 +1,9 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Models;
+namespace LaraMake\Console\Commands\App\Models;
 
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
-use LaraMaker\Console\Commands\Traits\InsertPropertiesDirectlyTrait;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Traits\InsertPropertiesDirectlyTrait;
 use LaraModel\Models\LaraModel;
 
 class MakeModel extends ClassMaker

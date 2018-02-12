@@ -1,8 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Repositories\Eloquent;
+namespace LaraMake\Console\Commands\App\Repositories\Eloquent;
 
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
 use LaraRepo\Contracts\RepositoryInterface;
 use LaraRepo\Eloquent\AbstractRepository;
 

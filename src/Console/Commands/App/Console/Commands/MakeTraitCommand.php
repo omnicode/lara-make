@@ -1,8 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Console\Commands;
+namespace LaraMake\Console\Commands\App\Console\Commands;
 
-use LaraMaker\Console\Commands\Abstracts\TraitMaker;
+use LaraMake\Console\Commands\Abstracts\TraitMaker;
 
 class MakeTraitCommand extends TraitMaker
 {
@@ -34,7 +34,7 @@ class MakeTraitCommand extends TraitMaker
     /**
      * @var string
      */
-    protected $description = 'Make flexible Class Commands with extends LaraMaker\Console\Commands\Abstracts\TraitMaker';
+    protected $description = 'Make flexible Class Commands with extends LaraMake\Console\Commands\Abstracts\TraitMaker';
 
     /**
      * @var string

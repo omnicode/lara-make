@@ -1,7 +1,7 @@
 <?php
-namespace LaraMaker\Console\Commands;
+namespace LaraMake\Console\Commands;
 
-use LaraMaker\Console\Commands\Abstracts\InterfaceMaker;
+use LaraMake\Console\Commands\Abstracts\InterfaceMaker;
 
 class LaraInterfaceMaker extends InterfaceMaker
 {

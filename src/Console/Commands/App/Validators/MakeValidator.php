@@ -1,9 +1,9 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Validators;
+namespace LaraMake\Console\Commands\App\Validators;
 
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
-use LaraMaker\Console\Commands\Traits\InsertMethodsDirectlyTrait;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Traits\InsertMethodsDirectlyTrait;
 use LaraValidation\LaraValidator;
 
 class MakeValidator extends ClassMaker

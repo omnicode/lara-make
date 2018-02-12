@@ -1,9 +1,9 @@
 <?php
 
-namespace LaraMaker\Console\Commands\Abstracts;
+namespace LaraMake\Console\Commands\Abstracts;
 
-use LaraMaker\Console\Commands\Traits\InsertPropertyTrait;
-use LaraMaker\Console\Commands\Traits\InsertTrait_Trait;
+use LaraMake\Console\Commands\Traits\InsertPropertyTrait;
+use LaraMake\Console\Commands\Traits\InsertTrait_Trait;
 
 abstract class TraitMaker extends Maker
 {

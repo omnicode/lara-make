@@ -1,8 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Repositories\Contracts;
+namespace LaraMake\Console\Commands\App\Repositories\Contracts;
 
-use LaraMaker\Console\Commands\Abstracts\InterfaceMaker;
+use LaraMake\Console\Commands\Abstracts\InterfaceMaker;
 use LaraRepo\Contracts\RepositoryInterface;
 
 class MakeRepositoryInterface extends InterfaceMaker

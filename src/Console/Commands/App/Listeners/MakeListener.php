@@ -1,9 +1,9 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Listeners;
+namespace LaraMake\Console\Commands\App\Listeners;
 
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
-use LaraMaker\Console\Commands\Traits\InsertMethodsDirectlyTrait;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Traits\InsertMethodsDirectlyTrait;
 
 class MakeListener extends ClassMaker
 {

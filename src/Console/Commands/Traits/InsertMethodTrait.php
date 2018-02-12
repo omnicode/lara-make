@@ -1,9 +1,9 @@
 <?php
 
-namespace LaraMaker\Console\Commands\Traits;
+namespace LaraMake\Console\Commands\Traits;
 
-use LaraMaker\Console\Commands\Parser;
-use LaraMaker\Exceptions\LaraCommandException;
+use LaraMake\Console\Commands\Parser;
+use LaraMake\Exceptions\LaraCommandException;
 
 trait InsertMethodTrait
 {

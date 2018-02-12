@@ -1,5 +1,5 @@
 <?php
-namespace LaraMaker\Exceptions;
+namespace LaraMake\Exceptions;
 
 class LaraCommandException extends \Exception
 {

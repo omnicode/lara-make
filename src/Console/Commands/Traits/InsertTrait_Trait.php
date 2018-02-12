@@ -1,8 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\Traits;
+namespace LaraMake\Console\Commands\Traits;
 
-use LaraMaker\Exceptions\LaraCommandException;
+use LaraMake\Exceptions\LaraCommandException;
 
 trait InsertTrait_Trait
 {

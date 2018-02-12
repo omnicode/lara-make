@@ -1,15 +1,10 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Http\Controllers;
+namespace LaraMake\Console\Commands\App\Http\Controllers;
 
 use LaraCrud\Controllers\LaraController;
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
-use LaraMaker\Console\Commands\App\LaraAppClassMaker;
-use LaraMaker\Console\Commands\Traits\FixPluralNameSuffixTrait;
-use LaraMaker\Console\Commands\Traits\InsertUseTrait;
-use LaraModel\Models\LaraModel;
-use LaraRepo\Contracts\CriteriaInterface;
-use LaraRepo\Contracts\RepositoryInterface;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Traits\FixPluralNameSuffixTrait;
 
 class MakeCrudController extends ClassMaker
 {

@@ -1,12 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Providers;
+namespace LaraMake\Console\Commands\App\Providers;
 
-use App\Models\Raxations;
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
-use LaraMaker\Console\Commands\App\LaraAppClassMaker;
-use LaraRepo\Contracts\RepositoryInterface;
-use LaraRepo\Eloquent\AbstractRepository;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
 
 class MakeRepositoryServiceProvider extends ClassMaker
 {

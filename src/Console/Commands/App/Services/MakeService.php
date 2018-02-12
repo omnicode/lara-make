@@ -1,8 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Services;
+namespace LaraMake\Console\Commands\App\Services;
 
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
 use LaraService\Services\LaraService;
 
 class MakeService extends ClassMaker

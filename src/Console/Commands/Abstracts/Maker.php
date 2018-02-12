@@ -1,17 +1,16 @@
 <?php
 
-namespace LaraMaker\Console\Commands\Abstracts;
+namespace LaraMake\Console\Commands\Abstracts;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\Command;
 use Illuminate\Support\Composer;
-use LaraMaker\Console\Commands\Parser;
-use LaraMaker\Console\Commands\Traits\CommentMakerTrait;
-use LaraMaker\Console\Commands\Traits\InsertMethodTrait;
-use LaraMaker\Console\Commands\Traits\InsertUseTrait;
-use LaraMaker\Console\Commands\Traits\TemplatesTrait;
-use LaraMaker\Exceptions\LaraCommandException;
+use LaraMake\Console\Commands\Traits\CommentMakerTrait;
+use LaraMake\Console\Commands\Traits\InsertMethodTrait;
+use LaraMake\Console\Commands\Traits\InsertUseTrait;
+use LaraMake\Console\Commands\Traits\TemplatesTrait;
+use LaraMake\Exceptions\LaraCommandException;
 use Symfony\Component\Console\Input\InputArgument;
 use LaraSupport\Str;
 

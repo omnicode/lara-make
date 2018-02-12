@@ -1,13 +1,13 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Http\Controllers;
+namespace LaraMake\Console\Commands\App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
-use LaraMaker\Console\Commands\Traits\FixPluralNameSuffixTrait;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Traits\FixPluralNameSuffixTrait;
 
 class MakeController extends ClassMaker
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\Traits;
+namespace LaraMake\Console\Commands\Traits;
 
-use LaraMaker\Console\Commands\Parser;
+use LaraMake\Console\Commands\Parser;
 
 trait InsertPropertyTrait
 {

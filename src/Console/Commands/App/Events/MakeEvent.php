@@ -1,13 +1,12 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Events;
+namespace LaraMake\Console\Commands\App\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Queue\SerializesModels;
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
-use LaraMaker\Console\Commands\App\LaraAppClassMaker;
-use LaraMaker\Console\Commands\Traits\InsertMethodsDirectlyTrait;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Traits\InsertMethodsDirectlyTrait;
 
 class MakeEvent extends ClassMaker
 {

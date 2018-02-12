@@ -1,8 +1,7 @@
 <?php
 
-namespace LaraMaker\Console\Commands;
+namespace LaraMake\Console\Commands;
 
-use Illuminate\Filesystem\Filesystem;
 
 class MakeMigration extends LaraClassMaker
 {

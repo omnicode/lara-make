@@ -1,10 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Http\Middlewares;
+namespace LaraMake\Console\Commands\App\Http\Middlewares;
 
-use Illuminate\Filesystem\Filesystem;
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
-use LaraMaker\Console\Commands\App\LaraAppClassMaker;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
 
 class MakeMiddleware extends ClassMaker
 {

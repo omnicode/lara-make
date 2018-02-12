@@ -1,9 +1,7 @@
 <?php
-namespace LaraMaker\Console\Commands;
+namespace LaraMake\Console\Commands;
 
-use LaraMaker\Console\Commands\Abstracts\TraitMaker;
-use LaraModel\Traits\FullNameTrait;
-use LaraModel\Traits\ModelExtrasTrait;
+use LaraMake\Console\Commands\Abstracts\TraitMaker;
 
 class LaraTraitMaker extends TraitMaker
 {

@@ -1,12 +1,10 @@
 <?php
 
-namespace LaraMaker\Console\Commands\Abstracts;
+namespace LaraMake\Console\Commands\Abstracts;
 
-use Illuminate\Support\Composer;
-use LaraMaker\Console\Commands\Traits\InsertInterfaceTrait;
-use LaraMaker\Console\Commands\Traits\InsertPropertyTrait;
-use LaraMaker\Console\Commands\Traits\InsertTrait_Trait;
-use LaraMaker\Exceptions\LaraCommandException;
+use LaraMake\Console\Commands\Traits\InsertInterfaceTrait;
+use LaraMake\Console\Commands\Traits\InsertPropertyTrait;
+use LaraMake\Console\Commands\Traits\InsertTrait_Trait;
 
 abstract class ClassMaker extends Maker
 {

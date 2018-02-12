@@ -1,8 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Console\Commands;
+namespace LaraMake\Console\Commands\App\Console\Commands;
 
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
 
 class MakeClassCommand extends ClassMaker
 {
@@ -29,7 +29,7 @@ class MakeClassCommand extends ClassMaker
     /**
      * @var string
      */
-    protected $description = 'Make flexible Class Commands with extends LaraMaker\Console\Commands\Abstracts\ClassMaker';
+    protected $description = 'Make flexible Class Commands with extends LaraMake\Console\Commands\Abstracts\ClassMaker';
 
     /**
      * @var string

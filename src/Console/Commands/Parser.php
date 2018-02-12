@@ -1,8 +1,7 @@
 <?php
 
-namespace LaraMaker\Console\Commands;
+namespace LaraMake\Console\Commands;
 
-use Illuminate\Support\Arr;
 use LaraSupport\Str;
 
 class Parser

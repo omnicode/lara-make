@@ -1,8 +1,8 @@
 <?php
 
-namespace LaraMaker\Console\Commands\App\Http\ViewComposers;
+namespace LaraMake\Console\Commands\App\Http\ViewComposers;
 
-use LaraMaker\Console\Commands\Abstracts\ClassMaker;
+use LaraMake\Console\Commands\Abstracts\ClassMaker;
 
 class MakeViewComposer extends ClassMaker
 {

@@ -1,7 +1,6 @@
 <?php
 
-namespace LaraMaker\Console\Commands\Traits;
-
+namespace LaraMake\Console\Commands\Traits;
 
 trait InsertPropertiesDirectlyTrait
 {
