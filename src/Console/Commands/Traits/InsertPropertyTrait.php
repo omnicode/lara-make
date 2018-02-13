@@ -19,7 +19,6 @@ trait InsertPropertyTrait
         if (!empty($this->properties)) {
             $this->insertProperties($this->properties);
         }
-
         $this->stubContent = str_replace(TAB . '_property' . PHP_EOL . PHP_EOL, '', $this->stubContent);
     }
 

@@ -303,6 +303,7 @@ abstract class Maker extends Command
     /**
      * @param $pattern
      * @param $path
+     * @return int
      */
     protected function makePattern($pattern, $path)
     {
@@ -310,11 +311,9 @@ abstract class Maker extends Command
         $makes[] = $pattern;
         Config::set(self::ConfigMakesPath, $makes);
         $this->currentPattern = $pattern;
-        $this->stubContent = $this->getStubContent();
         $this->fixStubContentFor($pattern);
-        $result = $this->files->put($path, $this->stubContent);
-
         $this->info($pattern . ' ' . $this->instance . ' created successfully.');
+        return $this->files->put($path, $this->stubContent);
     }
 
     /**
@@ -392,6 +391,7 @@ abstract class Maker extends Command
      */
     protected function fixStubContentFor($pattern)
     {
+        $this->stubContent = $this->getStubContent();
         $this->insertStubNamespace($pattern);
         $this->insertStubPatternType();
         $this->insertStubPattern($pattern);
@@ -402,8 +402,8 @@ abstract class Maker extends Command
             $this->insertStubProperties();
         }
         $this->insertStubMethods();
-
         $this->stubContent = str_replace(';' . PHP_EOL . '_use', ';', $this->stubContent);
+        $this->stubContent = str_replace(TAB . "_property\n\n", '', $this->stubContent);
         $this->stubContent = str_replace('_use' . PHP_EOL . PHP_EOL, '', $this->stubContent);
         $this->stubContent = str_replace(' _parent', '', $this->stubContent);
         $this->stubContent = str_replace(' _interface', '', $this->stubContent);
@@ -416,8 +416,21 @@ abstract class Maker extends Command
      */
     protected function getStubContent()
     {
-        $path = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR  . 'stubs' . DIRECTORY_SEPARATOR . 'pattern.stub';
-        return $this->files->get($path);
+        $content = '<?php' . PHP_EOL;
+        $content .= PHP_EOL;
+        $content .= '_namespace' . PHP_EOL;
+        $content .= PHP_EOL;
+        $content .= '_use' . PHP_EOL;
+        $content .= PHP_EOL;
+        $content .= '_type _pattern _parent _interface' . PHP_EOL;
+        $content .= '{' . PHP_EOL;
+        $content .= TAB . '_trait' . PHP_EOL;
+        $content .= PHP_EOL;
+        $content .= TAB . '_property' . PHP_EOL;
+        $content .= PHP_EOL;
+        $content .= TAB . '_method' . PHP_EOL;
+        $content .= '}' . PHP_EOL;
+        return $content;
     }
 
     /**
