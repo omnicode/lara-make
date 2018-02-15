@@ -27,37 +27,33 @@ class LaraMakeServiceProvider extends LaraServiceProvider
 
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-
-                LaraClassMaker::class,
-                LaraInterfaceMaker::class,
-                LaraTraitMaker::class,
-                MakeClassCommand::class,
-                MakeTraitCommand::class,
-                MakeInterfaceCommand::class,
-                MakeValidator::class,
-                MakeModel::class,
-                MakeRepositoryInterface::class,
-                MakeRepository::class,
-                MakeRepositoryServiceProvider::class,
-                MakeCrudController::class,
-                MakeController::class,
-                MakeViewComposer::class,
-                MakeMiddleware::class,
-                MakeJob::class,
-                MakeEvent::class,
-                MakeListener::class,
-                MakeService::class
+        $this->runningInConsole([
+            LaraClassMaker::class,
+            LaraInterfaceMaker::class,
+            LaraTraitMaker::class,
+            MakeClassCommand::class,
+            MakeTraitCommand::class,
+            MakeInterfaceCommand::class,
+            MakeValidator::class,
+            MakeModel::class,
+            MakeRepositoryInterface::class,
+            MakeRepository::class,
+            MakeRepositoryServiceProvider::class,
+            MakeCrudController::class,
+            MakeController::class,
+            MakeViewComposer::class,
+            MakeMiddleware::class,
+            MakeJob::class,
+            MakeEvent::class,
+            MakeListener::class,
+            MakeService::class
             ]);
-        }
     }
 
     public function register()
     {
-        require_once $this->getConstantsPath(__DIR__, 'class_constants.php');
-        require_once $this->getConstantsPath(__DIR__);
-        require_once $this->getFunctionsPath(__DIR__);
+        $this->registerConstants(__DIR__, 'class_constants.php');
+        $this->registerConstants(__DIR__);
     }
 
 }

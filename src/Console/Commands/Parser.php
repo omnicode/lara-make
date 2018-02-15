@@ -79,14 +79,6 @@ class Parser
         }
         $result .= ']' . $suffix;
         return $result;
-
-//        $str =  "$attribute = [";
-//        foreach ($data as $key => $value) {
-//            $str .=  self::parseAttribute($key, $value, $suffix, '=>');
-//        }
-//        $str .= "]" . $suffix;
-//
-//        return $str;
     }
 
 
