@@ -20,6 +20,7 @@ use LaraMake\Console\Commands\App\Validators\MakeValidator;
 use LaraMake\Console\Commands\LaraClassMaker;
 use LaraMake\Console\Commands\LaraInterfaceMaker;
 use LaraMake\Console\Commands\LaraTraitMaker;
+use LaraSupport\LaraDB;
 use LaraSupport\LaraServiceProvider;
 
 class LaraMakeServiceProvider extends LaraServiceProvider

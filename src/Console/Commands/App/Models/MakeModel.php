@@ -5,6 +5,7 @@ namespace LaraMake\Console\Commands\App\Models;
 use LaraMake\Console\Commands\Abstracts\ClassMaker;
 use LaraMake\Console\Commands\Traits\InsertPropertiesDirectlyTrait;
 use LaraModel\Models\LaraModel;
+use LaraSupport\LaraDB;
 
 class MakeModel extends ClassMaker
 {
@@ -62,58 +63,69 @@ class MakeModel extends ClassMaker
             '$_relations' => [],
         ]
     ];
-//
-//    /**
-//     *
-//     */
-//    protected function insertStubProperties()
-//    {
-//        if($this->currentPattern != $this->getBasePatternFullName()) {
-//            $defaultName = str_replace($this->rootNameSpace. DIRECTORY_SEPARATOR, '', $this->currentPattern);
-//            $table = $this->_tables[$defaultName];
-//            $columns = Schema::getColumnListing($table);
-//            unset($columns[array_search('id', $columns)]);
-//            $this->properties = [
-//                'public' => [
-//                    '$fillable' => $columns
-//                ]
-//            ];
-//            parent::insertStubProperties();
-//        }
-//    }
-//
-//    protected function makeBasedDb()
-//    {
-//        $tables = LaraDb::getTables();
-//        $this->processTable($tables);
-//
-//        $this->fixParent();
-//        $this->fillPatterns($tables);
-//
-//        $this->makeDbCorrespondType('Validator');
-//        $this->makeDbCorrespondType('RepositoryInterface', 'repository-interface');
-//        $this->makeDbCorrespondType('Repository');
-//        $this->makeDbCorrespondType('Service');
-//        $this->makeDbCorrespondType('Controllers', 'crudController');
-//    }
-//
-//    protected function makeDbCorrespondType($type, $command = '') {
-//        if (empty($command)) {
-//            $command = lcfirst($type);
-//        }
-//        foreach (array_keys($this->_tables) as $index => $model) {
-//            $this->call('lara-make:'. $command, ['name' => $model . $type ]);
-//        }
-//    }
-//
-//    protected function processTable(&$tables)
-//    {
-//        foreach ($tables as $index => $table) {
-//            $_table= str_singular(title_case($table));
-//            $_table = str_replace('_', '', $_table);
-//            $tables[$index] = $_table;
-//            $this->_tables[$_table] = $table;
-//        }
-//    }
+
+    /**
+     *
+     */
+    protected function insertStubProperties()
+    {
+        if($this->currentPattern != $this->getBasePatternFullName()) {
+            $defaultName = str_replace($this->rootNameSpace. DIRECTORY_SEPARATOR, '', $this->currentPattern);
+            $table = $this->_tables[$defaultName];
+            $columns = LaraDB::getColumnsFullInfo($table);
+            unset($columns['id']);
+            $this->properties = [
+                'public' => [
+                    '$fillable' => array_keys($columns)
+                ]
+            ];
+            parent::insertStubProperties();
+        }
+    }
+
+    protected function makeBasedDb()
+    {
+        $dbStructure = LaraDB::getDBStructure();
+        $tables = starts_with($this->getNameInput(), '_db:')
+            ? $this->getPatternsByPrefix('_db:')
+            : $tables = array_keys($dbStructure);
+
+        $this->processTable($tables);
+
+        $this->fixParent();
+        $this->fillPatterns($tables);
+
+        $this->makeDBCorrespondType('Validator');
+        $this->makeDBCorrespondType('RepositoryInterface', 'repository-interface');
+        $this->makeDBCorrespondType('Repository');
+        $this->makeDBCorrespondType('Service');
+        $this->makeDBCorrespondType('Controller', 'crud-controller');
+    }
+
+    /**
+     * @param $type
+     * @param string $command
+     */
+    protected function makeDBCorrespondType($type, $command = '') {
+        if (empty($command)) {
+            $command = lcfirst($type);
+        }
+        foreach (array_keys($this->_tables) as $index => $model) {
+            $this->call('lara-make:'. $command, ['name' => $model . $type ]);
+        }
+    }
+
+    /**
+     * @param $tables
+     */
+    protected function processTable(&$tables)
+    {
+        foreach ($tables as $index => $table) {
+            $_table= str_singular(title_case($table));
+            $_table = str_replace('_', '', $_table);
+            $tables[$index] = $_table;
+            $this->_tables[$_table] = $table;
+        }
+    }
 
 }

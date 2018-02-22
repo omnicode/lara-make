@@ -132,12 +132,12 @@ abstract class Maker extends Command
      * @return bool
      * @throws LaraCommandException
      */
-    public function fire()
+    public function handle()
     {
         $name = $this->getNameInput();
         $name = $this->fixName($name);
 
-        if ($name == $this->_config) {
+        if (starts_with($name, $this->_config)) {
             if(method_exists($this, 'makeBasedConfig')) {
                 return $this->makeBasedConfig();
             }
@@ -145,7 +145,7 @@ abstract class Maker extends Command
             throw new LaraCommandException($message);
         }
 
-        if ($name == '_db') {
+        if (starts_with($name, '_db')) {
             if(method_exists($this, 'makeBasedDb')) {
                 return $this->makeBasedDb();
             }
@@ -274,7 +274,7 @@ abstract class Maker extends Command
     protected function getPath($name)
     {
         if (starts_with($name, $this->rootNameSpace)) {
-            $name = str_replace($this->rootNameSpace, '', $name);
+            $name = str_replace($this->rootNameSpace . DIRECTORY_SEPARATOR, '', $name);
         }
 
         return base_path($this->rootPath . DIRECTORY_SEPARATOR . $name) . '.php';
@@ -287,6 +287,7 @@ abstract class Maker extends Command
      */
     public function confirm($question, $default = true)
     {
+        return true;
         return parent::confirm($question, $default);
     }
 
@@ -311,6 +312,7 @@ abstract class Maker extends Command
         $makes[] = $pattern;
         Config::set(self::ConfigMakesPath, $makes);
         $this->currentPattern = $pattern;
+        $this->setStubContent();
         $this->fixStubContentFor($pattern);
         $this->info($pattern . ' ' . $this->instance . ' created successfully.');
         return $this->files->put($path, $this->stubContent);
@@ -333,10 +335,11 @@ abstract class Maker extends Command
 
     /**
      * @param $name
-     * @param string $corrected
-     * @return bool
+     * @param bool $isSingular
+     * @param bool $isPlural
+     * @return string
      */
-    protected function correctedMessageConfirm($name, $corrected = '')
+    protected function correctedMessageConfirm($name, $isSingular = true, $isPlural = false)
     {
         //TODO improve message
         $message = "'%s' class, which should be make by %s command must be ends with %s, do you wont to continue";
@@ -346,9 +349,7 @@ abstract class Maker extends Command
             return $name;
         }
 
-        if (empty($corrected)) {
-            $corrected = $this->getCorrectedPatternName($name);
-        }
+        $corrected = $this->getCorrectedPatternName($name, $isSingular, $isPlural);
 
         $message = "Do you want to create corrected suffix '%s' class, or make your input '%s' class.";
         $message .= "For make corrected '%s' class press Yes";
@@ -361,9 +362,27 @@ abstract class Maker extends Command
         return $name;
     }
 
-    protected function getCorrectedPatternName($pattern)
+    /**
+     * @param $pattern
+     * @param bool $isSingular
+     * @param bool $isPlural
+     * @return string
+     */
+    protected function getCorrectedPatternName($pattern, $isSingular = true, $isPlural = false)
     {
-        return ends_with($pattern, $this->suffix) ? $pattern : $pattern . $this->suffix;
+        if (ends_with($pattern, $this->suffix)) {
+            $pattern = $this->clearSuffix($pattern);
+        }
+
+        if ($isPlural) {
+            $pattern = str_plural($pattern);
+        }
+
+        if ($isSingular) {
+            $pattern = str_singular($pattern);
+        }
+
+        return $pattern . $this->suffix;
     }
 
     protected function makeType($type, $name = '')
@@ -391,7 +410,6 @@ abstract class Maker extends Command
      */
     protected function fixStubContentFor($pattern)
     {
-        $this->stubContent = $this->getStubContent();
         $this->insertStubNamespace($pattern);
         $this->insertStubPatternType();
         $this->insertStubPattern($pattern);
@@ -412,9 +430,9 @@ abstract class Maker extends Command
     }
 
     /**
-     * @return string
+     *
      */
-    protected function getStubContent()
+    protected function setStubContent()
     {
         $content = '<?php' . PHP_EOL;
         $content .= PHP_EOL;
@@ -430,7 +448,7 @@ abstract class Maker extends Command
         $content .= PHP_EOL;
         $content .= TAB . '_method' . PHP_EOL;
         $content .= '}' . PHP_EOL;
-        return $content;
+        $this->stubContent = $content;
     }
 
     /**
@@ -518,5 +536,11 @@ abstract class Maker extends Command
     protected function getBasePatternFullName()
     {
         return $this->getPatternFullName($this->basePrefix . $this->instance);
+    }
+
+    protected function getPatternsByPrefix($prefix)
+    {
+        $patterns = str_replace_first($prefix, '', $this->getNameInput());
+        return explode(',', $patterns);
     }
 }

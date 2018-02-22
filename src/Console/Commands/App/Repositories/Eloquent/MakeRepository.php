@@ -73,19 +73,7 @@ class MakeRepository extends ClassMaker
             $interface
         ];
 
-//        $interfaceName = $instance->getCorrectedPatternName($this->clearSuffix($this->getNameInput()));
-//        $interfaceFullName = $instance->getPatternFullName($interfaceName);
-//
-//        if (!interface_exists($interfaceFullName)) {
-//            $this->call(self::LARA_MAKE . 'repository-interface', ['name' => $interfaceName]);
-//            $composer = app(Composer::class);
-//            $composer->dumpAutoloads();
-//        }
-//
-//        //TODO fix
-
         $model = $this->makeType('model');
-
         $this->methods = [
             'public' => [
                 [
