@@ -34,11 +34,7 @@
         "laravel": {
             "providers": [
                 "LaraMake\\ServiceProvider\\LaraMakeServiceProvider"
-            ],
-            "aliases": {
-                "LaraDB": "LaraSupport\\Facades\\LaraDB",
-                "LaraPassword": "LaraSupport\\Facades\\LaraPassword"
-            }
+            ]
         }
     }
 }
