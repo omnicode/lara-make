@@ -1,0 +1,12 @@
+<?php
+
+{{namespace}}
+
+{{use}}
+
+interface {{pattern}} {{parents}}
+{
+    {{constant}}
+
+    {{method}}
+}

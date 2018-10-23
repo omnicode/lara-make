@@ -1,28 +1,24 @@
 <?php
 namespace LaraMake\Console\Commands;
 
-use LaraMake\Console\Commands\Abstracts\TraitMaker;
+use LaraMake\Console\Commands\Abstracts\TTraitMaker;
 
-class LaraTraitMaker extends TraitMaker
+class LaraTraitMaker extends TTraitMaker
 {
     /**
      * @var string
      */
-    protected $name = 'trait';
+    public  $commandName = 'trait';
 
     /**
-     * @var bool
+    /**
+     * @var string
      */
-    protected $makeBase = true;
+    public  $rootPath = 'app' . DIRECTORY_SEPARATOR . 'Traits';
 
     /**
      * @var string
      */
-    protected $rootPath = 'app' . DIRECTORY_SEPARATOR . 'Traits';
-
-    /**
-     * @var string
-     */
-    protected $rootNameSpace = 'App' . DIRECTORY_SEPARATOR . 'Traits';
+    public  $rootNameSpace = 'App' . DIRECTORY_SEPARATOR . 'Traits';
 
 }

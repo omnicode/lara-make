@@ -2,6 +2,8 @@
 
 namespace LaraMake\Console\Commands\Traits;
 
+use LaraMake\Console\Commands\Abstracts\TInterfaceMaker;
+
 trait TemplatesTrait
 {
     /**
@@ -17,7 +19,7 @@ trait TemplatesTrait
         $methodStr .= $this->fixMethodArguments($arguments);
         $methodStr .= ')';
 
-        if ($this->type === 'interface') {
+        if (is_a($this, TInterfaceMaker::class)) {
             return $methodStr . ';' . PHP_EOL . TAB . PHP_EOL;
         }
 
