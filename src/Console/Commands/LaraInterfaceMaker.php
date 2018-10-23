@@ -2,27 +2,17 @@
 namespace LaraMake\Console\Commands;
 
 use LaraMake\Console\Commands\Abstracts\InterfaceMaker;
+use LaraRepo\Contracts\RepositoryInterface;
 
 class LaraInterfaceMaker extends InterfaceMaker
 {
     /**
      * @var string
      */
-    protected $name = 'interface';
+    public  $commandName = 'interface';
 
-    /**
-     * @var bool
-     */
-    protected $makeBase = true;
+    public $makeBase = true;
 
-    /**
-     * @var string
-     */
-    protected $rootPath = 'app' . DIRECTORY_SEPARATOR . 'Interfaces';
+    public $parents = [RepositoryInterface::class];
 
-    /**
-     * @var string
-     */
-    protected $rootNameSpace = 'App' . DIRECTORY_SEPARATOR . 'Interfaces';
-    
 }
