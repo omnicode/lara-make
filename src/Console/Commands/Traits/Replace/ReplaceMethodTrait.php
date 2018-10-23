@@ -1,51 +1,68 @@
 <?php
 
-namespace LaraMake\Console\Commands\Traits;
+namespace LaraMake\Console\Commands\Traits\Replace;
 
+use LaraMake\Console\Commands\Abstracts\TInterfaceMaker;
 use LaraMake\Console\Commands\Parser;
 use LaraMake\Exceptions\LaraCommandException;
+use function LaraMake\lara_maker_array_encode;
 
-trait InsertMethodTrait
+trait ReplaceMethodTrait
 {
-    /**
-     * Pattern methods
-     *
-     * @var array
-     */
-    protected $methods = [];
+//        $methods = [
+//            'public' => [
+//                [
+//                    'name' => '__construct',
+//                    'arguments' => ['name', 'str' => 'sas'],
+//                    'content' => 'return true;'
+//                ]
+//            ]
+//        ];
+
 
     /**
-     *
+     * @param $content
+     * @param $keyWord
+     * @param $value
+     * @return mixed
      */
-    protected function insertStubMethods()
+    public function replaceMethodKeyWord($content, $keyWord, $value)
     {
-        if (!empty($this->methods)) {
-            $this->insertMethods($this->methods);
-            $this->stubContent = str_replace(TAB . PHP_EOL . TAB . '_method' . PHP_EOL , '', $this->stubContent);
-        } else {
-            $this->stubContent = str_replace(TAB . PHP_EOL . TAB . PHP_EOL . TAB . '_method' . PHP_EOL , '', $this->stubContent);
-            $this->stubContent = str_replace(TAB . PHP_EOL . TAB . '_method' . PHP_EOL , '', $this->stubContent);
-            $this->stubContent = str_replace('_method', '', $this->stubContent);
+        $str = '';
+        $methods = (array) $value;
+
+        if (!empty($methods)) {
+            $str = $this->insertMethods($methods);
         }
+
+        if (empty($str)) {
+            return str_replace(PHP_EOL .TAB . $keyWord . PHP_EOL, '', $content);
+        }
+
+        $str = rtrim($str, PHP_EOL . PHP_EOL . TAB);
+        return str_replace(TAB . $keyWord, $str, $content);
     }
+
 
     /**
      * @param $methods
-     * @throws LaraCommandException
+     * @return string
      */
     protected function insertMethods($methods)
     {
+        $str = '';
         foreach ($methods as $type => $_methods) {
-            if ($this->type == 'interface' && $type != 'public') {
-                $message = "The '%s' method contains no public key which is not compatible in interface. Fix it in '%s' class";
-                $message = sprintf($message, '$methods', get_class($this));
-                throw new LaraCommandException($message);
-            }
+//            if (is_a($this, TInterfaceMaker::class) && $type != 'public') {
+//                $message = "The '%s' method contains no public key which is not compatible in interface. Fix it in '%s' class";
+//                $message = sprintf($message, '$methods', get_class($this));
+//                throw new LaraCommandException($message);
+//            }
 
             foreach ($_methods as $methodData) {
-                $this->insertMethodBased($type, $methodData);
+                $str .= $this->insertMethodBased($type, $methodData);
             }
         }
+        return $str;
     }
 
     /**
@@ -60,20 +77,12 @@ trait InsertMethodTrait
                 ". Each array must be have 'name' key. Fix this standards in '%s' class", '$methods', get_class($this));
             throw new LaraCommandException($message);
         }
+
         $name = $data['name'];
         $arguments = !empty($data['arguments']) ? $data['arguments'] : [];
-        $content = $this->getMethodContentBy($data);
-        $method = $this->methodTemplate($type, $name, $arguments, $content);
-        $this->stubContent = str_replace(TAB . '_method', $method . TAB . '_method', $this->stubContent);
-    }
 
-    /**
-     * @param $data
-     * @return array
-     */
-    protected function getMethodContentBy($data)
-    {
-        return !empty($data['content']) ? $data['content'] : '';
+        $content = !empty($data['content']) ? $data['content'] : '';;
+        return $this->methodTemplate($type, $name, $arguments, $content);
     }
 
     protected function fixMethodArguments($arguments)
@@ -95,9 +104,9 @@ trait InsertMethodTrait
                     $class = class_basename($class);
                     $data = $class . ' ' . $arr[1];
                 }
-                $argumentContents[] = Parser::parseAttribute($data);
+                $argumentContents[] = $this->parser->parseAttribute($data);
             } else {
-                $argumentContents[] = Parser::parseAttribute($argument, $data);
+                $argumentContents[] = $this->parser->parseAttribute($argument, $data);
             }
         }
         return implode(', ', $argumentContents);
@@ -108,8 +117,6 @@ trait InsertMethodTrait
     {
         return trim($content);
     }
-
-
 
     /**
      * @param $contents
@@ -129,6 +136,4 @@ trait InsertMethodTrait
 
         return $str;
     }
-
-
 }

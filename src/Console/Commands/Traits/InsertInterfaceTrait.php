@@ -21,9 +21,9 @@ trait InsertInterfaceTrait
     {
         if (!empty($this->interfaces)) {
             $this->insertInterfaces($this->interfaces);
-            $this->stubContent = str_replace(', _interface', '', $this->stubContent);
+            $this->_stubContent = str_replace(', _interface', '', $this->_stubContent);
         } else {
-            $this->stubContent = str_replace(' _interface', '', $this->stubContent);
+            $this->_stubContent = str_replace(' _interface', '', $this->_stubContent);
         }
     }
 
@@ -34,14 +34,14 @@ trait InsertInterfaceTrait
     protected function insertInterfaces($interfaces)
     {
         foreach ($interfaces as $interface) {
-            if (!interface_exists($interface) && !in_array($interface, config(self::ConfigMakesPath))) {
+            if (!interface_exists($interface) && !in_array($interface, config(self::CONFIG_MAKES_PATH))) {
                 $message = sprintf("%s interface does not exist. Fix it in '%s' class", $interface, get_class($this));
                 throw new LaraCommandException($message);
             }
 
-            $implements = str_contains($this->stubContent, ' implements ') ? '' : ' implements ';
+            $implements = str_contains($this->_stubContent, ' implements ') ? '' : ' implements ';
             $_interface = $this->insertStubUse($interface);
-            $this->stubContent = str_replace('_interface', $implements . $_interface. ', _interface', $this->stubContent);
+            $this->_stubContent = str_replace('_interface', $implements . $_interface. ', _interface', $this->_stubContent);
 
             $this->insertInterfaceMethods($interface);
         }
