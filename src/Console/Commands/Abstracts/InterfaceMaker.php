@@ -68,7 +68,7 @@ abstract class InterfaceMaker extends PhpMaker
     /**
      * @var string
      */
-    public $stub = 'general' . DIRECTORY_SEPARATOR . 'interface.stub';
+    public $stub = 'interface.stub';
 
 
     /**

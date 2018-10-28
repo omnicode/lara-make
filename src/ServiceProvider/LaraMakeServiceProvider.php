@@ -21,7 +21,6 @@ class LaraMakeServiceProvider extends LaraServiceProvider
 
     public function boot()
     {
-        $this->mergeConfig(__DIR__);
     }
 
     public function register()
