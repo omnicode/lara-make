@@ -342,7 +342,12 @@ abstract class BaseMaker extends Command
         $content = $this->replaceStubContent($content);
         $message = $this->attentionSprintF('In path  %s created successfully', $path . ' ' . $pattern . ' ' . $this->instance);
         $this->info($message);
-        return $this->files->put($path, $content);
+        if (trim($content)) {
+            return $this->files->put($path, $content);
+        }
+
+        $this->files->put($path, $content);
+        return true;
     }
 
     /**

@@ -207,4 +207,10 @@ abstract class PhpMaker extends BaseMaker
 
         return str_replace($keyWord . PHP_EOL, $to, $content);
     }
+
+    public function trimFinalContent($content)
+    {
+        $content = str_replace_last(PHP_EOL . '{}'. PHP_EOL, PHP_EOL . '{' . PHP_EOL . TAB . PHP_EOL . '}'. PHP_EOL, $content);
+        return parent::trimFinalContent($content);
+    }
 }
