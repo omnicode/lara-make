@@ -1,38 +1,39 @@
 {
-	"name": "omnicode/lara-make",
-	"description": "Advanced Make commands",
-	"keywords": ["laravel", "bootstrapping", "make"],
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Omnicode"
-		}
-	],
-	"require": {
-		"laravel/framework": "5.6.*",
-		"omnicode/lara-support": "3.0.* || 3.1.*",
-	"require-dev": {
-		"mockery/mockery": "~1.0",
-		"phpunit/phpunit": "~6.0"
-	},
-	"suggest": {
-		"omnicode/lara-view-composer": "Useful view composers to populate dropdown lists"
-	},
-	"autoload": {
-		"psr-4": {
-			"LaraMake\\": "src/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Tests\\": "tests/"
-		}
-	},
-	"extra": {
-		"laravel": {
-			"providers": [
-				"LaraMake\\ServiceProvider\\LaraMakeServiceProvider"
-			]
-		}
-	}
+    "name": "omnicode/lara-make",
+    "description": "Advanced Make commands",
+    "keywords": ["laravel", "bootstrapping", "make"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Omnicode"
+        }
+    ],
+    "require": {
+        "laravel/framework": "5.6.*",
+        "omnicode/lara-support": "3.0.* || 3.1.*",
+        "require-dev": {
+            "mockery/mockery": "~1.0",
+            "phpunit/phpunit": "~6.0"
+        },
+        "suggest": {
+            "omnicode/lara-view-composer": "Useful view composers to populate dropdown lists"
+        },
+        "autoload": {
+            "psr-4": {
+                "LaraMake\\": "src/"
+            }
+        },
+        "autoload-dev": {
+            "psr-4": {
+                "Tests\\": "tests/"
+            }
+        },
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "LaraMake\\ServiceProvider\\LaraMakeServiceProvider"
+                ]
+            }
+        }
+    }
 }
