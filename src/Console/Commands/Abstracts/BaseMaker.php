@@ -425,6 +425,9 @@ abstract class BaseMaker extends Command
      */
     public function option($key = null)
     {
+        if (is_null($key)) {
+            return $this->input->getOptions();
+        }
         $option =  parent::option($key);
         $option = $this->parser->parseInput($key, $option);
         return $this->processInput($key, $option);
