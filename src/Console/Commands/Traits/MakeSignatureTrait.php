@@ -11,7 +11,7 @@ trait MakeSignatureTrait
      * The console command name
      * automatically mast be start lara_make:  {self::LARA_MAKE}
      * fore change it command prefix you must be change const LARA_MAKE
-     *
+     * ok
      * @var
      */
     public $commandName;
