@@ -154,16 +154,16 @@ trait MakeSignatureTrait
 
         foreach ($settings as $property => $setting) {
             if (is_numeric($property)) {
-                if (str_contains($setting, [':', '|'])) {
+                if (Str::contains($setting, [':', '|'])) {
                     // @TODO fix
 //                    $property = Str::before($option, ':');
                     $message = $this->attentionSprintF('%s this structure in this time not available', ':, |');
                     throw new LaraCommandException($message);
-                } elseif (str_contains($setting, ['='])) {
+                } elseif (Str::contains($setting, ['='])) {
                     $property = Str::before($setting, '=');
-                } elseif (str_contains($setting, ['?'])) {
+                } elseif (Str::contains($setting, ['?'])) {
                     $property = Str::before($setting, '?');
-                } elseif (str_contains($setting, ['*'])) {
+                } elseif (Str::contains($setting, ['*'])) {
                     $property = Str::before($setting, '*');
                 } else {
                     $property = $setting;
